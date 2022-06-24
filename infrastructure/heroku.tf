@@ -28,7 +28,7 @@ resource "heroku_pipeline_coupling" "staging_pipeline_coupling" {
 // Add the GitHub repository integration with the pipeline.
 resource "herokux_pipeline_github_integration" "pipeline_integration" {
   pipeline_id = heroku_pipeline.everythingxrm_pipeline.id
-  org_repo = "utrost/EverythingXRM"
+  org_repo = "utrost/everythingxrm"
 }
 
 // Add Heroku app GitHub integration.
