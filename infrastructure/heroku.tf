@@ -1,5 +1,5 @@
-resource "heroku_app" "everythingXRM_staging" {
-  name   = "everythingXRM-staging"
+resource "heroku_app" "everythingxrm_staging" {
+  name   = "everythingxrm-staging"
   region = "eu"
 
   buildpacks = [
@@ -7,8 +7,8 @@ resource "heroku_app" "everythingXRM_staging" {
   ]
 }
 
-resource "heroku_addon" "everythingXRM_staging_db" {
-  app  = heroku_app.everythingXRM_staging.id
+resource "heroku_addon" "everythingxrm_staging_db" {
+  app  = heroku_app.everythingxrm_staging.id
   plan = "heroku-postgresql:hobby-dev"
 }
 
@@ -19,7 +19,7 @@ resource "heroku_pipeline" "everythingxrm_pipeline" {
 
 # Couple app to pipeline.
 resource "heroku_pipeline_coupling" "staging_pipeline_coupling" {
-  app      = heroku_app.everythingXRM_staging.id
+  app      = heroku_app.everythingxrm_staging.id
   pipeline = heroku_pipeline.everythingxrm_pipeline.id
   stage    = "staging"
 }
@@ -33,7 +33,7 @@ resource "herokux_pipeline_github_integration" "pipeline_integration" {
 
 // Add Heroku app GitHub integration.
 resource "herokux_app_github_integration" "everything_gh_integration" {
-  app_id = heroku_app.everythingXRM_staging.uuid
+  app_id = heroku_app.everythingxrm_staging.uuid
   branch = "main"
   auto_deploy = true
   wait_for_ci = true
