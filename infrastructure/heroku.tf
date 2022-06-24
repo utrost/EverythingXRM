@@ -13,21 +13,21 @@ resource "heroku_addon" "everythingXRM_staging_db" {
 }
 
 
-resource "heroku_pipeline" "everythingXRM_pipeline" {
-  name = "everythingXRM-pipeline"
+resource "heroku_pipeline" "everythingxrm_pipeline" {
+  name = "everythingxrm_pipeline-pipeline"
 }
 
 # Couple app to pipeline.
 resource "heroku_pipeline_coupling" "staging_pipeline_coupling" {
   app      = heroku_app.everythingXRM_staging.id
-  pipeline = heroku_pipeline.everythingXRM_pipeline.id
+  pipeline = heroku_pipeline.everythingxrm_pipeline.id
   stage    = "staging"
 }
 
 
 // Add the GitHub repository integration with the pipeline.
 resource "herokux_pipeline_github_integration" "pipeline_integration" {
-  pipeline_id = heroku_pipeline.everythingXRM_pipeline.id
+  pipeline_id = heroku_pipeline.everythingxrm_pipeline.id
   org_repo = "utrost/EverythingXRM"
 }
 
