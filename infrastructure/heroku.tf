@@ -14,7 +14,7 @@ resource "heroku_addon" "everythingXRM_staging_db" {
 
 
 resource "heroku_pipeline" "everythingxrm_pipeline" {
-  name = "everythingxrm_pipeline-pipeline"
+  name = "everythingxrm_pipeline"
 }
 
 # Couple app to pipeline.
