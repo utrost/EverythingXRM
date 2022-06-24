@@ -8,7 +8,7 @@ terraform {
 
     herokux = {
       source = "davidji99/herokux"
-      version = "0.33.0"
+      version = "0.33.4"
     }
   }
   backend "remote" {
