@@ -34,7 +34,7 @@ resource "herokux_pipeline_github_integration" "pipeline_integration" {
 // Add Heroku app GitHub integration.
 resource "herokux_app_github_integration" "everything_gh_integration" {
   app_id = heroku_app.everythingxrm_staging.uuid
-  branch = "main"
+  branch = "master"
   auto_deploy = true
   wait_for_ci = true
 
