@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -Dspring.profiles.active=heroku $JAVA_OPTS -jar build/libs/everything-0.0.1-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -Dspring.profiles.active=heroku $JAVA_OPTS -jar build/libs/EverythingXRM-0.0.1-SNAPSHOT.jar
