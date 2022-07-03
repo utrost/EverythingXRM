@@ -6,6 +6,8 @@ import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import io.jmix.dynattr.model.Categorized;
+import io.jmix.dynattr.model.Category;
 import org.trostheide.everythingxrm.entity.StandardEntity;
 
 import javax.persistence.*;
@@ -13,10 +15,11 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @JmixEntity
-@Table(name = "XRM_ITEM")
+@Table(name = "XRM_ITEM", indexes = {
+        @Index(name = "IDX_ITEM_CATEGORY_ID", columnList = "CATEGORY_ID")
+})
 @Entity(name = "xrm_Item")
-public class Item extends StandardEntity {
-
+public class Item extends StandardEntity implements Categorized {
     @InstanceName
     @Column(name = "NAME", nullable = false)
     @NotNull
@@ -30,6 +33,18 @@ public class Item extends StandardEntity {
     @Composition
     @OneToMany(mappedBy = "item")
     private List<ItemComment> comments;
+
+    @JoinColumn(name = "CATEGORY_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public List<ItemComment> getComments() {
         return comments;
@@ -60,4 +75,5 @@ public class Item extends StandardEntity {
         return String.format("%s", name);
 
     }
+
 }

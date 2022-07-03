@@ -41,6 +41,8 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     implementation("org.postgresql:postgresql")
+    implementation("io.jmix.dynattr:jmix-dynattr-starter")
+    implementation("io.jmix.dynattr:jmix-dynattr-ui-starter")
 }
 
 test {

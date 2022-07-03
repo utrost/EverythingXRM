@@ -6,9 +6,10 @@
         <instance id="itemDc"
                   class="org.trostheide.everythingxrm.item.Item">
             <fetchPlan extends="_base">
+                <property name="category" fetchPlan="_instance_name"/>
                 <property name="comments" fetchPlan="_base"/>
             </fetchPlan>
-            <loader/>
+            <loader dynamicAttributes="true"/>
             <collection id="commentsDc" property="comments"/>
         </instance>
     </data>
@@ -28,12 +29,17 @@
     <dialogMode height="600"
                 width="800"/>
     <layout spacing="true" expand="editActions">
+
         <form id="form" dataContainer="itemDc">
             <column width="350px">
                 <textField id="nameField" property="name"/>
                 <textArea id="descriptionField" property="description" rows="5"/>
             </column>
         </form>
+        <dynamicAttributesPanel dataContainer="itemDc"
+                                cols="2"
+                                rows="2"
+                                width="AUTO"/>
         <groupBox id="commentsBox" caption="msg://org.trostheide.everythingxrm.item/Item.comments">
             <table id="commentsTable" dataContainer="commentsDc" width="100%" height="200px">
                 <actions>
