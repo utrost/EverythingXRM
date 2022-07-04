@@ -25,6 +25,16 @@ public class Item extends StandardEntity implements Categorized {
     @NotNull
     private String name;
 
+    @OnDelete(DeletePolicy.CASCADE)
+    @Composition
+    @OneToMany(mappedBy = "item1")
+    private List<ItemRelationship> item1Relationship;
+
+    @OnDelete(DeletePolicy.CASCADE)
+    @Composition
+    @OneToMany(mappedBy = "item2")
+    private List<ItemRelationship> item2Relationship;
+
     @Column(name = "DESCRIPTION")
     @Lob
     private String description;
@@ -37,6 +47,22 @@ public class Item extends StandardEntity implements Categorized {
     @JoinColumn(name = "CATEGORY_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
+
+    public List<ItemRelationship> getItem2Relationship() {
+        return item2Relationship;
+    }
+
+    public void setItem2Relationship(List<ItemRelationship> item2Relationship) {
+        this.item2Relationship = item2Relationship;
+    }
+
+    public List<ItemRelationship> getItem1Relationship() {
+        return item1Relationship;
+    }
+
+    public void setItem1Relationship(List<ItemRelationship> item1Relationship) {
+        this.item1Relationship = item1Relationship;
+    }
 
     public Category getCategory() {
         return category;

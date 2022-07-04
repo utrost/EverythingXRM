@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="xrm">
+        <createTable tableName="XRM_ITEM_RELATIONSHIP">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_XRM_ITEM_RELATIONSHIP"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="ITEM1_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ITEM_RELATIONSHIP_CLASSIFICATION_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ITEM2_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="INVERSE_RELATIONSHIP_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="xrm">
+        <createTable tableName="XRM_ITEM_RELATIONSHIP_CLASSIFICATION">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true"
+                             primaryKeyName="PK_XRM_ITEM_RELATIONSHIP_CLASSIFICATION"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ITEM1_CATEGORY_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ITEM2_CATEGORY_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="REVERSE_RELATIONSHIP_CATEGORY_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="xrm">
+        <createIndex indexName="IDX_ITEMRELATIONSHIP" tableName="XRM_ITEM_RELATIONSHIP">
+            <column name="ITEM_RELATIONSHIP_CLASSIFICATION_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="ITEM_RELATIONSHIP_CLASSIFICATION_ID"
+                                 baseTableName="XRM_ITEM_RELATIONSHIP"
+                                 constraintName="FK_XRM_ITEM_RELATIONSHIP_ON_ITEM_RELATIONSHIP_CLASSIFICATION"
+                                 referencedColumnNames="ID" referencedTableName="XRM_ITEM_RELATIONSHIP_CLASSIFICATION"/>
+    </changeSet>
+    <changeSet id="4" author="xrm">
+        <createIndex indexName="IDX_ITEMRELATIONSHIPCLASSIFICATION" tableName="XRM_ITEM_RELATIONSHIP_CLASSIFICATION">
+            <column name="REVERSE_RELATIONSHIP_CATEGORY_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REVERSE_RELATIONSHIP_CATEGORY_ID"
+                                 baseTableName="XRM_ITEM_RELATIONSHIP_CLASSIFICATION"
+                                 constraintName="FK_XRMITEMRELATIONSHIPCLASSIFICA_ON_REVERSERELATIONSHIPCATEGORY"
+                                 referencedColumnNames="ID" referencedTableName="XRM_ITEM_RELATIONSHIP_CLASSIFICATION"/>
+    </changeSet>
+    <changeSet id="5" author="xrm">
+        <createIndex indexName="IDX_ITEMRELATIONSHIP_ITEM1_ID" tableName="XRM_ITEM_RELATIONSHIP">
+            <column name="ITEM1_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="ITEM1_ID" baseTableName="XRM_ITEM_RELATIONSHIP"
+                                 constraintName="FK_XRM_ITEM_RELATIONSHIP_ON_ITEM1" referencedColumnNames="ID"
+                                 referencedTableName="XRM_ITEM"/>
+    </changeSet>
+    <changeSet id="6" author="xrm">
+        <createIndex indexName="IDX_ITEMRELATIONSHIP_ITEM2_ID" tableName="XRM_ITEM_RELATIONSHIP">
+            <column name="ITEM2_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="ITEM2_ID" baseTableName="XRM_ITEM_RELATIONSHIP"
+                                 constraintName="FK_XRM_ITEM_RELATIONSHIP_ON_ITEM2" referencedColumnNames="ID"
+                                 referencedTableName="XRM_ITEM"/>
+    </changeSet>
+    <changeSet id="7" author="xrm">
+        <addForeignKeyConstraint baseColumnNames="ITEM1_CATEGORY_ID"
+                                 baseTableName="XRM_ITEM_RELATIONSHIP_CLASSIFICATION"
+                                 constraintName="FK_XRM_ITEM_RELATIONSHIP_CLASSIFICATION_ON_ITEM1_CATEGORY"
+                                 referencedColumnNames="ID" referencedTableName="DYNAT_CATEGORY"/>
+    </changeSet>
+    <changeSet id="8" author="xrm">
+        <addForeignKeyConstraint baseColumnNames="ITEM2_CATEGORY_ID"
+                                 baseTableName="XRM_ITEM_RELATIONSHIP_CLASSIFICATION"
+                                 constraintName="FK_XRM_ITEM_RELATIONSHIP_CLASSIFICATION_ON_ITEM2_CATEGORY"
+                                 referencedColumnNames="ID" referencedTableName="DYNAT_CATEGORY"/>
+    </changeSet>
+    <changeSet id="9" author="xrm">
+        <addForeignKeyConstraint baseColumnNames="INVERSE_RELATIONSHIP_ID" baseTableName="XRM_ITEM_RELATIONSHIP"
+                                 constraintName="FK_XRM_ITEM_RELATIONSHIP_ON_INVERSE_RELATIONSHIP"
+                                 referencedColumnNames="ID" referencedTableName="XRM_ITEM_RELATIONSHIP"/>
+    </changeSet>
+</databaseChangeLog>

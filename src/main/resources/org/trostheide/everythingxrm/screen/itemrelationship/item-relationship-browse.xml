@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        xmlns:dynattr="http://jmix.io/schema/dynattr/ui"
+        caption="msg://itemRelationshipBrowse.caption"
+        focusComponent="itemRelationshipsTable">
+    <data readOnly="true">
+        <collection id="itemRelationshipsDc"
+                    class="org.trostheide.everythingxrm.item.ItemRelationship">
+            <fetchPlan extends="_base">
+                <property name="item1" fetchPlan="_base"/>
+                <property name="itemRelationshipClassification" fetchPlan="_base"/>
+                <property name="item2" fetchPlan="_base"/>
+                <property name="inverseRelationship" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="itemRelationshipsDl">
+                <query>
+                    <![CDATA[select e from xrm_ItemRelationship e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <dynattr:dynamicAttributes/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="itemRelationshipsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="itemRelationshipsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="itemRelationshipsTable"
+                    width="100%"
+                    dataContainer="itemRelationshipsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="item1"/>
+                <column id="itemRelationshipClassification"/>
+                <column id="item2"/>
+                <column id="inverseRelationship"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="itemRelationshipsTable.create"/>
+                <button id="editBtn" action="itemRelationshipsTable.edit"/>
+                <button id="removeBtn" action="itemRelationshipsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -5,6 +5,10 @@
         <item screen="xrm_User.browse" caption="msg://org.trostheide.everythingxrm.screen.user/UserBrowse.caption"/>
         <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
         <item screen="xrm_Item.browse" caption="msg://org.trostheide.everythingxrm.item.screen/itemBrowse.menu"/>
+        <item screen="xrm_ItemRelationshipClassification.browse"
+              caption="msg://org.trostheide.everythingxrm.screen.itemrelationshipclassification/itemRelationshipClassificationBrowse.menu"/>
+        <item screen="xrm_ItemRelationship.browse"
+              caption="msg://org.trostheide.everythingxrm.screen.itemrelationship/itemRelationshipBrowse.menu"/>
     </menu>
 
 </menu-config>
