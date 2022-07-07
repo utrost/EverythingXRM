@@ -35,18 +35,46 @@
             <form id="form" dataContainer="itemRelationshipClassificationDc">
                 <column width="350px">
                     <textField id="nameField" property="name"/>
+                    <!--
                     <entityPicker id="item1CategoryField" property="item1Category">
                         <actions>
                             <action id="entityLookup" type="entity_lookup"/>
                             <action id="entityClear" type="entity_clear"/>
                         </actions>
                     </entityPicker>
+                    -->
+                    <entitySuggestionField id="item1CategoryField" property="item1Category" dataContainer="itemRelationshipClassificationDc"  inputPrompt="Start typing">
+                        <actions>
+                            <action id="lookup" type="entity_lookup"/>
+                            <action id="open" type="entity_open"/>
+                        </actions>
+                        <query entityClass="io.jmix.dynattr.model.Category"
+                               escapeValueForLike="true"
+                               searchStringFormat="%${searchString}%">
+                            select c from dynat_Category c where lower(c.name) like lower(:searchString) escape '\'
+                        </query>
+                    </entitySuggestionField>
+                    <!--
                     <entityPicker id="item2CategoryField" property="item2Category">
                         <actions>
                             <action id="entityLookup" type="entity_lookup"/>
                             <action id="entityClear" type="entity_clear"/>
                         </actions>
                     </entityPicker>
+                    -->
+                    <entitySuggestionField id="item2CategoryField" property="item2Category" dataContainer="itemRelationshipClassificationDc"  inputPrompt="Start typing">
+                        <actions>
+                            <action id="lookup" type="entity_lookup"/>
+                            <action id="open" type="entity_open"/>
+                        </actions>
+                        <query entityClass="io.jmix.dynattr.model.Category"
+                               escapeValueForLike="true"
+                               searchStringFormat="%${searchString}%">
+                            select c from dynat_Category c where lower(c.name) like lower(:searchString) escape '\'
+                        </query>
+                    </entitySuggestionField>
+
+
                     <entityPicker id="reverseRelationshipCategoryField" property="reverseRelationshipCategory">
                         <actions>
                             <action id="entityLookup" type="entity_lookup"/>

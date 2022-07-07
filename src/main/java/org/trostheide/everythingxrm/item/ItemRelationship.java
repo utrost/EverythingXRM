@@ -6,6 +6,7 @@ import io.jmix.core.entity.annotation.OnDeleteInverse;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import org.trostheide.everythingxrm.entity.StandardEntity;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 

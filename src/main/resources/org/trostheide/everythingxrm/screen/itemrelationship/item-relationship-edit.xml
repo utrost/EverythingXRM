@@ -29,36 +29,47 @@
                 caption="msg:///actions.Close"
                 icon="EDITOR_CANCEL"/>
     </actions>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
     <layout spacing="true" expand="scrollBox">
         <scrollBox id="scrollBox" spacing="true">
             <form id="form" dataContainer="itemRelationshipDc">
                 <column width="350px">
-                    <entityPicker id="item1Field" property="item1">
+                    <entitySuggestionField id="item1Field" property="item1" dataContainer="itemRelationshipDc"  inputPrompt="Start typing">
                         <actions>
-                            <action id="entityLookup" type="entity_lookup"/>
-                            <action id="entityClear" type="entity_clear"/>
+                            <action id="lookup" type="entity_lookup"/>
+                            <action id="open" type="entity_open"/>
                         </actions>
-                    </entityPicker>
-                    <entityPicker id="itemRelationshipClassificationField" property="itemRelationshipClassification">
+                        <query entityClass="org.trostheide.everythingxrm.item.Item"
+                               escapeValueForLike="true"
+                               searchStringFormat="%${searchString}%">
+                            select c from xrm_Item c where lower(c.name) like lower(:searchString) escape '\'
+                        </query>
+                    </entitySuggestionField>
+                    <entitySuggestionField id="itemRelationshipClassificationField" property="itemRelationshipClassification" dataContainer="itemRelationshipDc"  inputPrompt="Start typing">
                         <actions>
-                            <action id="entityLookup" type="entity_lookup"/>
-                            <action id="entityClear" type="entity_clear"/>
+                            <action id="lookup" type="entity_lookup"/>
+                            <action id="open" type="entity_open"/>
                         </actions>
-                    </entityPicker>
-                    <entityPicker id="item2Field" property="item2">
+                        <query entityClass="org.trostheide.everythingxrm.item.ItemRelationshipClassification"
+                               escapeValueForLike="true"
+                               searchStringFormat="%${searchString}%">
+                            select c from xrm_ItemRelationshipClassification c where lower(c.name) like lower(:searchString) escape '\'
+                        </query>
+                    </entitySuggestionField>
+                    <entitySuggestionField id="item2Field" property="item2" dataContainer="itemRelationshipDc"  inputPrompt="Start typing">
                         <actions>
-                            <action id="entityLookup" type="entity_lookup"/>
-                            <action id="entityClear" type="entity_clear"/>
+                            <action id="lookup" type="entity_lookup"/>
+                            <action id="open" type="entity_open"/>
                         </actions>
-                    </entityPicker>
-                    <entityPicker id="inverseRelationshipField" property="inverseRelationship">
-                        <actions>
-                            <action id="entityLookup" type="entity_lookup"/>
-                            <action id="entityClear" type="entity_clear"/>
-                        </actions>
-                    </entityPicker>
+                        <query entityClass="org.trostheide.everythingxrm.item.Item"
+                               escapeValueForLike="true"
+                               searchStringFormat="%${searchString}%">
+                               select c from xrm_Item c where lower(c.name) like lower(:searchString) escape '\'
+                        </query>
+                    </entitySuggestionField>
                 </column>
             </form>
         </scrollBox>

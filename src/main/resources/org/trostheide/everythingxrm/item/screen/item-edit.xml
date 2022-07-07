@@ -9,7 +9,6 @@
                 <property name="category" fetchPlan="_instance_name"/>
                 <property name="comments" fetchPlan="_base"/>
                 <property name="item1Relationship" fetchPlan="_base"/>
-                <property name="item2Relationship" fetchPlan="_base"/>
             </fetchPlan>
             <loader dynamicAttributes="true"/>
             <collection id="commentsDc" property="comments"/>
