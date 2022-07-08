@@ -35,17 +35,22 @@
                 dataLoader="itemsDl">
             <properties include=".*"/>
         </filter>
-        <table id="itemsTable"
+        <groupTable id="itemsTable"
                width="100%"
-               dataContainer="itemsDc">
+               dataContainer="itemsDc"
+                    multiselect="true">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
+                <group>
+                    <column id="category"></column>
+                </group>
                 <column id="name"/>
                 <column id="description"/>
+                <column id="lastModifiedDate"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
@@ -54,7 +59,7 @@
                 <button id="editBtn" action="itemsTable.edit"/>
                 <button id="removeBtn" action="itemsTable.remove"/>
             </buttonsPanel>
-        </table>
+        </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
             <button action="lookupSelectAction"/>
             <button action="lookupCancelAction"/>

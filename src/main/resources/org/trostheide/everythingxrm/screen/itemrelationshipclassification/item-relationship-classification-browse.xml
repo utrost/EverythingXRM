@@ -54,6 +54,7 @@
                 <column id="item1Category"/>
                 <column id="item2Category"/>
                 <column id="reverseRelationshipCategory"/>
+                <column id="lastModifiedDate"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

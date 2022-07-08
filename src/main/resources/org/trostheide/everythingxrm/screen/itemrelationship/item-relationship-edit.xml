@@ -37,7 +37,8 @@
         <scrollBox id="scrollBox" spacing="true">
             <form id="form" dataContainer="itemRelationshipDc">
                 <column width="350px">
-                    <entitySuggestionField id="item1Field" property="item1" dataContainer="itemRelationshipDc"  inputPrompt="Start typing">
+                    <entitySuggestionField id="item1Field" property="item1" dataContainer="itemRelationshipDc"
+                                           inputPrompt="Start typing" editable="false" caption="msg://org.trostheide.everythingxrm.entity/ItemRelationship.thisItem">
                         <actions>
                             <action id="lookup" type="entity_lookup"/>
                             <action id="open" type="entity_open"/>
@@ -48,7 +49,9 @@
                             select c from xrm_Item c where lower(c.name) like lower(:searchString) escape '\'
                         </query>
                     </entitySuggestionField>
-                    <entitySuggestionField id="itemRelationshipClassificationField" property="itemRelationshipClassification" dataContainer="itemRelationshipDc"  inputPrompt="Start typing">
+                    <entitySuggestionField id="itemRelationshipClassificationField"
+                                           property="itemRelationshipClassification" dataContainer="itemRelationshipDc"
+                                           inputPrompt="Start typing" caption="msg://org.trostheide.everythingxrm.entity/ItemRelationship.classification">
                         <actions>
                             <action id="lookup" type="entity_lookup"/>
                             <action id="open" type="entity_open"/>
@@ -56,10 +59,12 @@
                         <query entityClass="org.trostheide.everythingxrm.item.ItemRelationshipClassification"
                                escapeValueForLike="true"
                                searchStringFormat="%${searchString}%">
-                            select c from xrm_ItemRelationshipClassification c where lower(c.name) like lower(:searchString) escape '\'
+                            select c from xrm_ItemRelationshipClassification c where lower(c.name) like
+                            lower(:searchString) escape '\'
                         </query>
                     </entitySuggestionField>
-                    <entitySuggestionField id="item2Field" property="item2" dataContainer="itemRelationshipDc"  inputPrompt="Start typing">
+                    <entitySuggestionField id="item2Field" property="item2" dataContainer="itemRelationshipDc"
+                                           inputPrompt="Start typing"  caption="msg://org.trostheide.everythingxrm.entity/ItemRelationship.otherItem">
                         <actions>
                             <action id="lookup" type="entity_lookup"/>
                             <action id="open" type="entity_open"/>
@@ -67,7 +72,7 @@
                         <query entityClass="org.trostheide.everythingxrm.item.Item"
                                escapeValueForLike="true"
                                searchStringFormat="%${searchString}%">
-                               select c from xrm_Item c where lower(c.name) like lower(:searchString) escape '\'
+                            select c from xrm_Item c where lower(c.name) like lower(:searchString) escape '\'
                         </query>
                     </entitySuggestionField>
                 </column>

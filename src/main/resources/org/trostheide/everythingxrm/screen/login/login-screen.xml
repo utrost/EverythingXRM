@@ -1,6 +1,5 @@
 <window xmlns="http://jmix.io/schema/ui/window"
         caption="msg://caption">
-
     <actions>
         <action id="submit"
                 caption="msg://loginButton"

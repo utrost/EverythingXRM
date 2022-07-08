@@ -43,7 +43,8 @@
                         </actions>
                     </entityPicker>
                     -->
-                    <entitySuggestionField id="item1CategoryField" property="item1Category" dataContainer="itemRelationshipClassificationDc"  inputPrompt="Start typing">
+                    <entitySuggestionField id="item1CategoryField" property="item1Category"
+                                           dataContainer="itemRelationshipClassificationDc" inputPrompt="Start typing">
                         <actions>
                             <action id="lookup" type="entity_lookup"/>
                             <action id="open" type="entity_open"/>
@@ -62,7 +63,8 @@
                         </actions>
                     </entityPicker>
                     -->
-                    <entitySuggestionField id="item2CategoryField" property="item2Category" dataContainer="itemRelationshipClassificationDc"  inputPrompt="Start typing">
+                    <entitySuggestionField id="item2CategoryField" property="item2Category"
+                                           dataContainer="itemRelationshipClassificationDc" inputPrompt="Start typing">
                         <actions>
                             <action id="lookup" type="entity_lookup"/>
                             <action id="open" type="entity_open"/>
@@ -73,14 +75,13 @@
                             select c from dynat_Category c where lower(c.name) like lower(:searchString) escape '\'
                         </query>
                     </entitySuggestionField>
-
-
                     <entityPicker id="reverseRelationshipCategoryField" property="reverseRelationshipCategory">
                         <actions>
                             <action id="entityLookup" type="entity_lookup"/>
                             <action id="entityClear" type="entity_clear"/>
                         </actions>
                     </entityPicker>
+                    <dateField id="lastModifiedDateField" property="lastModifiedDate"/>
                 </column>
             </form>
         </scrollBox>
