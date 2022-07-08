@@ -50,7 +50,6 @@
                 </group>
                 <column id="name"/>
                 <column id="description"/>
-                <column id="lastModifiedDate"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

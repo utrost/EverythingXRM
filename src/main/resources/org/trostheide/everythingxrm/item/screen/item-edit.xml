@@ -42,25 +42,24 @@
                                 rows="2"
                                 width="AUTO"/>
         <groupBox id="commentsBox" caption="msg://org.trostheide.everythingxrm.item/Item.comments">
-            <table id="commentsTable" dataContainer="commentsDc" width="AUTO" height="AUTO" multiselect="true" textSelectionEnabled="true">
+            <dataGrid id="commentsTable" dataContainer="commentsDc" width="AUTO" height="AUTO"  textSelectionEnabled="true">
                 <actions>
                     <action id="create" type="create"/>
                     <action id="edit" type="edit"/>
                     <action id="remove" type="remove"/>
                 </actions>
                 <columns>
-                    <column id="title" caption="msg://org.trostheide.everythingxrm.entity/ItemComment.title"/>
-                    <column id="text" caption="msg://org.trostheide.everythingxrm.entity/ItemComment.text" captionAsHtml="true"/>
-                    <column id="lastModifiedBy" caption="msg://org.trostheide.everythingxrm.entity/ItemComment.lastModifiedBy"/>
-                    <column id="lastModifiedDate"
-                            caption="msg://org.trostheide.everythingxrm.entity/ItemComment.lastModifiedDate"/>
+                    <column id="title" caption="msg://org.trostheide.everythingxrm.entity/ItemComment.title" property="title"/>
+                    <column id="text" caption="msg://org.trostheide.everythingxrm.entity/ItemComment.text" property="text">
+                        <htmlRenderer/>
+                    </column>
                 </columns>
                 <buttonsPanel>
                     <button action="commentsTable.create"/>
                     <button action="commentsTable.edit"/>
                     <button action="commentsTable.remove"/>
                 </buttonsPanel>
-            </table>
+            </dataGrid>
         </groupBox>
         <groupBox id="item1RelationshipBox" caption="msg://org.trostheide.everythingxrm.entity/ItemRelationship">
             <table id="item1RelationshipTable" dataContainer="item1RelationshipDc" width="AUTO" height="AUTO" multiselect="true" textSelectionEnabled="true">
