@@ -43,6 +43,8 @@ dependencies {
     implementation("org.postgresql:postgresql")
     implementation("io.jmix.dynattr:jmix-dynattr-starter")
     implementation("io.jmix.dynattr:jmix-dynattr-ui-starter")
+    implementation 'io.jmix.audit:jmix-audit-starter'
+    implementation 'io.jmix.audit:jmix-audit-ui-starter'
 }
 
 test {
