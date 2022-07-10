@@ -101,6 +101,22 @@
             </table>
         </groupBox>
             </tab>
+            <tab id="tab4"
+                 caption="Tab 4"
+                 margin="true">
+            <label id="label4"
+                   value="Label 4"/>
+                    <vbox>
+                        <vbox id="dynamicDropZone"
+                              height="AUTO"
+                              spacing="true">
+
+                            <fileMultiUpload id="fileMultiUploadField"
+                                             caption="Upload"
+                                             dropZone="dynamicDropZone" />
+                        </vbox>
+                    </vbox>
+            </tab>
         </tabSheet>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>

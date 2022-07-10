@@ -1,6 +1,7 @@
 package org.trostheide.everythingxrm.item;
 
 import io.jmix.core.DeletePolicy;
+import io.jmix.core.FileRef;
 import io.jmix.core.entity.annotation.OnDelete;
 import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.DependsOnProperties;
@@ -47,6 +48,17 @@ public class Item extends StandardEntity implements Categorized {
     @JoinColumn(name = "CATEGORY_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
+
+    @Column(name = "FILE_")
+    private FileRef file;
+
+    public FileRef getFile() {
+        return file;
+    }
+
+    public void setFile(FileRef file) {
+        this.file = file;
+    }
 
     public List<ItemRelationship> getItem2Relationship() {
         return item2Relationship;
