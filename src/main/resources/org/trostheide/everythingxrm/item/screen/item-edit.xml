@@ -9,10 +9,12 @@
                 <property name="category" fetchPlan="_instance_name"/>
                 <property name="comments" fetchPlan="_base"/>
                 <property name="item1Relationship" fetchPlan="_base"/>
+                <property name="attachments" fetchPlan="_base"/>
             </fetchPlan>
             <loader dynamicAttributes="true"/>
             <collection id="commentsDc" property="comments"/>
             <collection id="item1RelationshipDc" property="item1Relationship"/>
+            <collection id="attachmentsDc" property="attachments"/>
         </instance>
     </data>
     <facets>
@@ -42,15 +44,18 @@
                                 rows="2"
                                 width="AUTO"/>
         <groupBox id="commentsBox" caption="msg://org.trostheide.everythingxrm.item/Item.comments">
-            <dataGrid id="commentsTable" dataContainer="commentsDc" width="AUTO" height="AUTO"  textSelectionEnabled="true">
+            <dataGrid id="commentsTable" dataContainer="commentsDc" width="AUTO" height="AUTO"
+                      textSelectionEnabled="true">
                 <actions>
                     <action id="create" type="create"/>
                     <action id="edit" type="edit"/>
                     <action id="remove" type="remove"/>
                 </actions>
                 <columns>
-                    <column id="title" caption="msg://org.trostheide.everythingxrm.entity/ItemComment.title" property="title"/>
-                    <column id="text" caption="msg://org.trostheide.everythingxrm.entity/ItemComment.text" property="text">
+                    <column id="title" caption="msg://org.trostheide.everythingxrm.entity/ItemComment.title"
+                            property="title"/>
+                    <column id="text" caption="msg://org.trostheide.everythingxrm.entity/ItemComment.text"
+                            property="text">
                         <htmlRenderer/>
                     </column>
                 </columns>
@@ -62,7 +67,8 @@
             </dataGrid>
         </groupBox>
         <groupBox id="item1RelationshipBox" caption="msg://org.trostheide.everythingxrm.entity/ItemRelationship">
-            <table id="item1RelationshipTable" dataContainer="item1RelationshipDc" width="AUTO" height="AUTO" multiselect="true" textSelectionEnabled="true">
+            <table id="item1RelationshipTable" dataContainer="item1RelationshipDc" width="AUTO" height="AUTO"
+                   multiselect="true" textSelectionEnabled="true">
                 <actions>
                     <action id="create" type="create"/>
                     <action id="edit" type="edit"/>
@@ -70,13 +76,32 @@
                 </actions>
                 <columns>
                     <column id="item1" caption="msg://org.trostheide.everythingxrm.entity/ItemRelationship.thisItem"/>
-                    <column id="itemRelationshipClassification" caption="msg://org.trostheide.everythingxrm.entity/ItemRelationship.classification"/>
+                    <column id="itemRelationshipClassification"
+                            caption="msg://org.trostheide.everythingxrm.entity/ItemRelationship.classification"/>
                     <column id="item2" caption="msg://org.trostheide.everythingxrm.entity/ItemRelationship.otherItem"/>
                 </columns>
                 <buttonsPanel>
                     <button action="item1RelationshipTable.create"/>
                     <button action="item1RelationshipTable.edit"/>
                     <button action="item1RelationshipTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="attachmentsBox" caption="msg://org.trostheide.everythingxrm.item/Item.attachments">
+            <table id="attachmentsTable" dataContainer="attachmentsDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                    <column id="fileName" caption="File"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="attachmentsTable.create"/>
+                    <button action="attachmentsTable.edit"/>
+                    <button action="attachmentsTable.remove"/>
                 </buttonsPanel>
             </table>
         </groupBox>
