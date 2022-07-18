@@ -41,7 +41,11 @@
                                            inputPrompt="Start typing" editable="false" caption="msg://org.trostheide.everythingxrm.entity/ItemRelationship.thisItem">
                         <actions>
                             <action id="lookup" type="entity_lookup"/>
-                            <action id="open" type="entity_open"/>
+                            <action id="open" type="entity_open">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                            </action>
                         </actions>
                         <query entityClass="org.trostheide.everythingxrm.item.Item"
                                escapeValueForLike="true"
@@ -67,7 +71,11 @@
                                            inputPrompt="Start typing"  caption="msg://org.trostheide.everythingxrm.entity/ItemRelationship.otherItem">
                         <actions>
                             <action id="lookup" type="entity_lookup"/>
-                            <action id="open" type="entity_open"/>
+                            <action id="open" type="entity_open">
+                                <properties>
+                                    <property name="openMode" value="DIALOG"/>
+                                </properties>
+                            </action>
                         </actions>
                         <query entityClass="org.trostheide.everythingxrm.item.Item"
                                escapeValueForLike="true"
