@@ -30,7 +30,7 @@
     </actions>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="itemsTable" spacing="true">
+    <layout expand="itemsTable" spacing="true" width="80%">
         <filter id="filter"
                 dataLoader="itemsDl">
             <properties include=".*"/>

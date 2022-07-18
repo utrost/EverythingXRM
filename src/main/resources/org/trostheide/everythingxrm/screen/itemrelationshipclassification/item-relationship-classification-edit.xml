@@ -82,6 +82,7 @@
                         </actions>
                     </entityPicker>
                     <dateField id="lastModifiedDateField" property="lastModifiedDate"/>
+                    <textField id="reverseField" property="reverse"/>
                 </column>
             </form>
         </scrollBox>

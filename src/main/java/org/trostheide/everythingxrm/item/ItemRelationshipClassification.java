@@ -24,6 +24,9 @@ public class ItemRelationshipClassification extends StandardEntity {
     @NotNull
     private String name;
 
+    @Column(name = "REVERSE_")
+    private String reverse;
+
     @JoinColumn(name = "ITEM1_CATEGORY_ID", nullable = false)
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -39,6 +42,14 @@ public class ItemRelationshipClassification extends StandardEntity {
     @JoinColumn(name = "REVERSE_RELATIONSHIP_CATEGORY_ID")
     @OneToOne(fetch = FetchType.LAZY)
     private ItemRelationshipClassification reverseRelationshipCategory;
+
+    public String getReverse() {
+        return reverse;
+    }
+
+    public void setReverse(String reverse) {
+        this.reverse = reverse;
+    }
 
     public ItemRelationshipClassification getReverseRelationshipCategory() {
         return reverseRelationshipCategory;
