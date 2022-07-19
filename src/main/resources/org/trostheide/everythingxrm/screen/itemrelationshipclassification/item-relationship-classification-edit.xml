@@ -34,20 +34,19 @@
         <scrollBox id="scrollBox" spacing="true">
             <form id="form" dataContainer="itemRelationshipClassificationDc">
                 <column width="350px">
-                    <textField id="nameField" property="name"/>
-                    <!--
-                    <entityPicker id="item1CategoryField" property="item1Category">
-                        <actions>
-                            <action id="entityLookup" type="entity_lookup"/>
-                            <action id="entityClear" type="entity_clear"/>
-                        </actions>
-                    </entityPicker>
-                    -->
-                    <entitySuggestionField id="item1CategoryField" property="item1Category"
+                 <entitySuggestionField id="item1CategoryField" property="item1Category"
                                            dataContainer="itemRelationshipClassificationDc" inputPrompt="Start typing">
                         <actions>
-                            <action id="lookup" type="entity_lookup"/>
-                            <action id="open" type="entity_open"/>
+                            <action id="lookup" type="entity_lookup">
+                                <properties>
+                                    <property name="openMode" value="DIALOG"/>
+                                </properties>
+                            </action>
+                            <action id="open" type="entity_open">
+                                <properties>
+                                    <property name="openMode" value="DIALOG"/>
+                                </properties>
+                            </action>
                         </actions>
                         <query entityClass="io.jmix.dynattr.model.Category"
                                escapeValueForLike="true"
@@ -55,18 +54,15 @@
                             select c from dynat_Category c where lower(c.name) like lower(:searchString) escape '\'
                         </query>
                     </entitySuggestionField>
-                    <!--
-                    <entityPicker id="item2CategoryField" property="item2Category">
-                        <actions>
-                            <action id="entityLookup" type="entity_lookup"/>
-                            <action id="entityClear" type="entity_clear"/>
-                        </actions>
-                    </entityPicker>
-                    -->
+                    <textField id="nameField" property="name"/>
                     <entitySuggestionField id="item2CategoryField" property="item2Category"
                                            dataContainer="itemRelationshipClassificationDc" inputPrompt="Start typing">
                         <actions>
-                            <action id="lookup" type="entity_lookup"/>
+                            <action id="lookup" type="entity_lookup">
+                                <properties>
+                                    <property name="openMode" value="DIALOG"/>
+                                </properties>
+                            </action>
                             <action id="open" type="entity_open"/>
                         </actions>
                         <query entityClass="io.jmix.dynattr.model.Category"
@@ -77,7 +73,11 @@
                     </entitySuggestionField>
                     <entityPicker id="reverseRelationshipCategoryField" property="reverseRelationshipCategory">
                         <actions>
-                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityLookup" type="entity_lookup">
+                                <properties>
+                                    <property name="openMode" value="DIALOG"/>
+                                </properties>
+                            </action>
                             <action id="entityClear" type="entity_clear"/>
                         </actions>
                     </entityPicker>
