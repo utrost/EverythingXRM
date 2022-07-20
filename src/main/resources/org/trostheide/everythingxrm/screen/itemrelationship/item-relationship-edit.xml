@@ -16,7 +16,7 @@
         </instance>
         <collection id="itemRelationshipClassificationDc"
                     class="org.trostheide.everythingxrm.item.ItemRelationshipClassification"
-                    fetchPlan="_base">
+                    fetchPlan="_local">
             <loader id="itemRelationshipClassificationsDl">
                 <query>
                     <![CDATA[select c from xrm_ItemRelationshipClassification c where  c.item1Category = :item1Category and c.item2Category = :item2Category]]>
