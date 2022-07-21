@@ -35,11 +35,23 @@
         <filter id="filter"
                 dataLoader="itemsDl">
             <properties include=".*"/>
+            <!--configurations>
+                <configuration id="categoryFilter" operation="AND"
+                               name="Category" default="true">
+                    <propertyFilter property="category" operation="IN_LIST" />
+                </configuration>
+
+            </configurations-->
         </filter>
-        <groupTable id="itemsTable"
+        <pagination id="paginationWithDefault"
+                    itemsPerPageVisible="true"
+                    itemsPerPageOptions="20, 100, 1000"
+                    itemsPerPageDefaultValue="20">
+            <loaderProvider loaderId="itemsDl"/>
+        </pagination>
+        <dataGrid id="itemsTable"
                width="100%"
-               dataContainer="itemsDc"
-                    multiselect="true">
+               dataContainer="itemsDc">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
@@ -47,11 +59,9 @@
                 <action id="excelExport" type="excelExport"/>
             </actions>
             <columns>
-                <group>
-                    <column id="category"></column>
-                </group>
-                <column id="name"/>
-                <column id="description"/>
+                <column id="category" property="category"/>
+                <column id="name" property="name"/>
+                <column id="description" property="description"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
@@ -61,7 +71,7 @@
                 <button id="removeBtn" action="itemsTable.remove"/>
                 <button id="excelExportBtn" action="itemsTable.excelExport" />
             </buttonsPanel>
-        </groupTable>
+        </dataGrid>
         <hbox id="lookupActions" spacing="true" visible="false">
             <button action="lookupSelectAction"/>
             <button action="lookupCancelAction"/>
