@@ -11,6 +11,8 @@ import io.jmix.ui.model.CollectionLoader;
 import io.jmix.ui.model.InstanceContainer;
 import io.jmix.ui.model.InstanceLoader;
 import io.jmix.ui.screen.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.trostheide.everythingxrm.item.Item;
 import org.trostheide.everythingxrm.item.ItemAttachment;
@@ -19,6 +21,8 @@ import org.trostheide.everythingxrm.item.ItemAttachment;
 @UiDescriptor("item-edit.xml")
 @EditedEntityContainer("itemDc")
 public class ItemEdit extends StandardEditor<Item> {
+
+    private static final Logger log = LoggerFactory.getLogger(ItemEdit.class);
 
     @Autowired
     private UiComponents uiComponents;

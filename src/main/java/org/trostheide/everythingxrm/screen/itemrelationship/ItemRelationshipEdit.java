@@ -5,10 +5,13 @@ import io.jmix.ui.component.EntityComboBox;
 import io.jmix.ui.component.HasValue;
 import io.jmix.ui.model.CollectionLoader;
 import io.jmix.ui.screen.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.trostheide.everythingxrm.item.Item;
 import org.trostheide.everythingxrm.item.ItemRelationship;
 import org.trostheide.everythingxrm.item.ItemRelationshipClassification;
+import org.trostheide.everythingxrm.item.screen.ItemEdit;
 
 
 @UiController("xrm_ItemRelationship.edit")
@@ -16,6 +19,7 @@ import org.trostheide.everythingxrm.item.ItemRelationshipClassification;
 @EditedEntityContainer("itemRelationshipDc")
 public class ItemRelationshipEdit extends StandardEditor<ItemRelationship> {
 
+    private static final Logger log = LoggerFactory.getLogger(ItemRelationshipEdit.class);
     @Autowired
     private EntityComboBox<ItemRelationshipClassification> itemRelationshipClassificationField;
 
@@ -24,16 +28,16 @@ public class ItemRelationshipEdit extends StandardEditor<ItemRelationship> {
 
     @Subscribe("item1Field")
     public void onItem1FieldValueChange(HasValue.ValueChangeEvent<Item> event) {
-        System.out.println("Item 1 has changed!");
-        //itemRelationshipClassificationField.setValue(null);
+        log.debug("Item 1 has changed!");
+        itemRelationshipClassificationField.setValue(null);
         addItemCategoryParameter(event, "item1Category");
         refreshClassificationLookup();
     }
 
     @Subscribe("item2Field")
     public void onItem2FieldValueChange(HasValue.ValueChangeEvent<Item> event) {
-        System.out.println("Item 2 has changed!");
-        //itemRelationshipClassificationField.setValue(null);
+        log.debug("Item 2 has changed!");
+        itemRelationshipClassificationField.setValue(null);
         addItemCategoryParameter(event, "item2Category");
         refreshClassificationLookup();
     }
