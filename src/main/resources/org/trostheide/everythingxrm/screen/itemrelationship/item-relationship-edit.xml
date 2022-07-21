@@ -14,6 +14,15 @@
             </fetchPlan>
             <loader/>
         </instance>
+        <collection id="itemRelationshipClassificationDc"
+                    class="org.trostheide.everythingxrm.item.ItemRelationshipClassification"
+                    fetchPlan="_local">
+            <loader id="itemRelationshipClassificationsDl">
+                <query>
+                    <![CDATA[select c from xrm_ItemRelationshipClassification c where  c.item1Category = :item1Category and c.item2Category = :item2Category]]>
+                </query>
+            </loader>
+        </collection>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -53,20 +62,11 @@
                             select c from xrm_Item c where lower(c.name) like lower(:searchString) escape '\'
                         </query>
                     </entitySuggestionField>
-                    <entitySuggestionField id="itemRelationshipClassificationField"
-                                           property="itemRelationshipClassification" dataContainer="itemRelationshipDc"
-                                           inputPrompt="Start typing" caption="msg://org.trostheide.everythingxrm.entity/ItemRelationship.classification">
-                        <actions>
-                            <action id="lookup" type="entity_lookup"/>
-                            <action id="open" type="entity_open"/>
-                        </actions>
-                        <query entityClass="org.trostheide.everythingxrm.item.ItemRelationshipClassification"
-                               escapeValueForLike="true"
-                               searchStringFormat="%${searchString}%">
-                            select c from xrm_ItemRelationshipClassification c where lower(c.name) like
-                            lower(:searchString) escape '\'
-                        </query>
-                    </entitySuggestionField>
+                    <entityComboBox id="itemRelationshipClassificationField"
+                                          optionsContainer="itemRelationshipClassificationDc"
+                                    property="itemRelationshipClassification"
+                                           caption="msg://org.trostheide.everythingxrm.entity/ItemRelationship.classification">
+                    </entityComboBox>
                     <entitySuggestionField id="item2Field" property="item2" dataContainer="itemRelationshipDc"
                                            inputPrompt="Start typing"  caption="msg://org.trostheide.everythingxrm.entity/ItemRelationship.otherItem">
                         <actions>
